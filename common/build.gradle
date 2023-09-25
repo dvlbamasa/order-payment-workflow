@@ -14,10 +14,12 @@ dependencyManagement {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compileOnly 'io.temporal:temporal-sdk:1.21.1'
+	annotationProcessor "org.hibernate.orm:hibernate-jpamodelgen:6.2.8.Final"
 }
 
 tasks.named('test') {

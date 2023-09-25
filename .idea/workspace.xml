@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9d1de7b-e7fc-4838-a98a-47422bf59715" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/common/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/order/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/payment/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipment/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/shipment/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipment/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/shipment/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/OrderApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/OrderApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/OrderWorkflowConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/OrderWorkflowConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +69,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -132,7 +130,7 @@
       <option name="presentableId" value="Default" />
       <updated>1695360133536</updated>
       <workItem from="1695360134514" duration="15450000" />
-      <workItem from="1695608421427" duration="10975000" />
+      <workItem from="1695608421427" duration="13741000" />
     </task>
     <servers />
   </component>

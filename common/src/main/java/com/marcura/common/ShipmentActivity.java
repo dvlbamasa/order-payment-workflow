@@ -20,6 +20,7 @@ public interface ShipmentActivity {
     static ActivityOptions GetActivityOptions() {
         return ActivityOptions.newBuilder()
                 .setStartToCloseTimeout(Duration.ofMinutes(2))
+                .setTaskQueue(TaskQueue.SHIPMENT_TASK_QUEUE.name())
                 .setRetryOptions(GetRetryOptions())
                 .build();
     }

@@ -20,6 +20,7 @@ public class OrderWorkflowImpl implements OrderWorkflow{
             PaymentActivity.GetActivityOptions());
     private final ShipmentActivity shipmentActivity = Workflow.newActivityStub(ShipmentActivity.class,
             ShipmentActivity.GetActivityOptions());
+
     @Override
     public void createOrder(OrderDto orderDto) {
         orderActivity.createOrder(orderDto);

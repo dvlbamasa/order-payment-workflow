@@ -27,7 +27,7 @@ public interface OrderActivity {
 
     static RetryOptions GetRetryOptions() {
         return RetryOptions.newBuilder()
-                .setMaximumAttempts(3)
+                .setMaximumAttempts(5)
                 .build();
     }
 }

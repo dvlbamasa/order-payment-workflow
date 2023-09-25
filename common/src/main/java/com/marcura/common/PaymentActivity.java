@@ -20,6 +20,7 @@ public interface PaymentActivity {
     static ActivityOptions GetActivityOptions() {
         return ActivityOptions.newBuilder()
                 .setStartToCloseTimeout(Duration.ofMinutes(2))
+                .setTaskQueue(TaskQueue.PAYMENT_TASK_QUEUE.name())
                 .setRetryOptions(GetRetryOptions())
                 .build();
     }

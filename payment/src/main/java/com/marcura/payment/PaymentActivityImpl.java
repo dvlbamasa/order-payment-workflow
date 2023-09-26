@@ -16,7 +16,7 @@ public class PaymentActivityImpl implements PaymentActivity {
 
     private final PaymentService paymentService;
     @Override
-    public void debitPayment(OrderDto orderDto) {
-        paymentService.debitPayment(orderDto);
+    public String debitPayment(OrderDto orderDto) {
+        return paymentService.debitPayment(orderDto);
     }
 }

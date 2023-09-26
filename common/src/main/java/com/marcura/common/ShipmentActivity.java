@@ -15,7 +15,7 @@ import java.time.Duration;
 
 @ActivityInterface
 public interface ShipmentActivity {
-    void ship(OrderDto orderDto);
+    String ship(OrderDto orderDto);
 
     static ActivityOptions GetActivityOptions() {
         return ActivityOptions.newBuilder()

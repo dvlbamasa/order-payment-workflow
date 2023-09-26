@@ -1,6 +1,7 @@
 package com.marcura.order;
 
 import com.marcura.common.OrderDto;
+import com.marcura.common.ResponseDto;
 import com.marcura.common.TaskQueue;
 import io.temporal.client.WorkflowOptions;
 import io.temporal.workflow.WorkflowInterface;
@@ -19,7 +20,7 @@ import java.util.UUID;
 public interface OrderWorkflow {
 
     @WorkflowMethod
-    void createOrder(OrderDto orderDto);
+    ResponseDto createOrder(OrderDto orderDto);
 
     static WorkflowOptions GetWorkflowOption() {
         return  WorkflowOptions.newBuilder()

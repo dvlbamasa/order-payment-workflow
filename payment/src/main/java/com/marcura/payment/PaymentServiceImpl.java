@@ -20,10 +20,11 @@ public class PaymentServiceImpl implements PaymentService {
     private final PaymentMapper paymentMapper;
 
     @Override
-    public void debitPayment(OrderDto orderDto) {
+    public String debitPayment(OrderDto orderDto) {
         UUID paymentId = UUID.randomUUID();
         Payment payment = paymentMapper.toEntity(orderDto);
         payment.setPaymentId(paymentId.toString());
-        repository.save(payment);
+        Payment paymentPersisted = repository.save(payment);
+        return paymentPersisted.getPaymentId();
     }
 }

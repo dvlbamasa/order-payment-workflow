@@ -3,8 +3,11 @@ package com.marcura.order;
 import com.marcura.common.OrderActivity;
 import com.marcura.common.OrderDto;
 import com.marcura.common.PaymentActivity;
+import com.marcura.common.ResponseDto;
 import com.marcura.common.ShipmentActivity;
 import io.temporal.workflow.Workflow;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,6 +17,8 @@ import io.temporal.workflow.Workflow;
  */
 public class OrderWorkflowImpl implements OrderWorkflow{
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderWorkflowImpl.class);
+
     private final OrderActivity orderActivity = Workflow.newActivityStub(OrderActivity.class,
             OrderActivity.GetActivityOptions());
     private final PaymentActivity paymentActivity = Workflow.newActivityStub(PaymentActivity.class,
@@ -22,9 +27,17 @@ public class OrderWorkflowImpl implements OrderWorkflow{
             ShipmentActivity.GetActivityOptions());
 
     @Override
-    public void createOrder(OrderDto orderDto) {
+    public ResponseDto createOrder(OrderDto orderDto) {
+        LOGGER.info("Creating order...");
         orderActivity.createOrder(orderDto);
-        paymentActivity.debitPayment(orderDto);
-        shipmentActivity.ship(orderDto);
+        LOGGER.info("Processing payment debit...");
+        String paymentId = paymentActivity.debitPayment(orderDto);
+        LOGGER.info("Shipping order...");
+        String shipmentId = shipmentActivity.ship(orderDto);
+        LOGGER.info("Workflow finished!");
+        ResponseDto responseDto = new ResponseDto();
+        responseDto.setShipmentId(shipmentId);
+        responseDto.setPaymentTransactionId(paymentId);
+        return responseDto;
     }
 }

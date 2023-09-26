@@ -10,5 +10,5 @@ import com.marcura.common.OrderDto;
  */
 public interface PaymentService {
 
-    void debitPayment(OrderDto orderDto);
+    String debitPayment(OrderDto orderDto);
 }

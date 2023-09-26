@@ -5,7 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.marcura.common", "com.marcura.order"})
+@ComponentScan(basePackages = {"com.marcura.common",
+		 "com.marcura.order"})
 
 public class OrderApplication {
 

@@ -15,7 +15,7 @@ import java.time.Duration;
 
 @ActivityInterface
 public interface PaymentActivity {
-    void debitPayment(OrderDto orderDto);
+    String debitPayment(OrderDto orderDto);
 
     static ActivityOptions GetActivityOptions() {
         return ActivityOptions.newBuilder()

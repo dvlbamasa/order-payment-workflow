@@ -10,5 +10,5 @@ import com.marcura.common.OrderDto;
  */
 public interface ShipmentService {
 
-    void ship(OrderDto orderDto);
+    String ship(OrderDto orderDto);
 }

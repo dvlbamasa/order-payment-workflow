@@ -1,6 +1,7 @@
 package com.marcura.order;
 
 import com.marcura.common.OrderDto;
+import com.marcura.common.ResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,8 +24,7 @@ public class OrderWorkflowController {
     private final OrderWorkflowOrchestrator orderWorkflowOrchestrator;
 
     @PostMapping
-    public ResponseEntity<String> createOrder(@RequestBody OrderDto orderDto) {
-        orderWorkflowOrchestrator.createOrder(orderDto);
-        return ResponseEntity.ok("OK");
+    public ResponseEntity<ResponseDto> createOrder(@RequestBody OrderDto orderDto) {
+        return ResponseEntity.ok(orderWorkflowOrchestrator.createOrder(orderDto));
     }
 }

@@ -16,7 +16,7 @@ public class ShipmentActivityImpl implements ShipmentActivity {
     private final ShipmentService shipmentService;
 
     @Override
-    public void ship(OrderDto orderDto) {
-        shipmentService.ship(orderDto);
+    public String ship(OrderDto orderDto) {
+        return shipmentService.ship(orderDto);
     }
 }

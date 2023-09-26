@@ -18,8 +18,9 @@ public class ShipmentServiceImpl implements ShipmentService{
     private final ShipmentRepository repository;
 
     @Override
-    public void ship(OrderDto orderDto) {
+    public String ship(OrderDto orderDto) {
         Shipment shipment = mapper.toEntity(orderDto);
-        repository.save(shipment);
+        Shipment shipmentPersisted = repository.save(shipment);
+        return shipmentPersisted.getId().toString();
     }
 }

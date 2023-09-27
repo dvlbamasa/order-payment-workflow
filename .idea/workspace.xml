@@ -6,22 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a9d1de7b-e7fc-4838-a98a-47422bf59715" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/marcura/common/OrderActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/marcura/common/OrderActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/marcura/common/PaymentActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/marcura/common/PaymentActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/marcura/common/ShipmentActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/marcura/common/ShipmentActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/OrderActivityImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/OrderActivityImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/OrderRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/OrderWorkflowImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/OrderWorkflowImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment/src/main/java/com/marcura/payment/PaymentActivityImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/com/marcura/payment/PaymentActivityImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment/src/main/java/com/marcura/payment/PaymentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/com/marcura/payment/PaymentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment/src/main/java/com/marcura/payment/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/com/marcura/payment/PaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment/src/main/java/com/marcura/payment/PaymentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/com/marcura/payment/PaymentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipment/src/main/java/com/marcura/shipment/ShipmentActivityImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipment/src/main/java/com/marcura/shipment/ShipmentActivityImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipment/src/main/java/com/marcura/shipment/ShipmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipment/src/main/java/com/marcura/shipment/ShipmentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipment/src/main/java/com/marcura/shipment/ShipmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipment/src/main/java/com/marcura/shipment/ShipmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipment/src/main/java/com/marcura/shipment/ShipmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipment/src/main/java/com/marcura/shipment/ShipmentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/src/test/java/com/marcura/payment/PaymentApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/test/java/com/marcura/payment/PaymentApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +100,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.OrderApplicationTests.testIntegrationOrder">
+  <component name="RunManager" selected="Gradle.PaymentApplicationTests.testDebitPayment_success">
     <configuration name="OrderApplicationTests.testIntegrationOrder" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -130,6 +115,30 @@
             <option value=":order:test" />
             <option value="--tests" />
             <option value="&quot;com.marcura.order.OrderApplicationTests.testIntegrationOrder&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="PaymentApplicationTests.testDebitPayment_success" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":payment:test" />
+            <option value="--tests" />
+            <option value="&quot;com.marcura.payment.PaymentApplicationTests.testDebitPayment_success&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -162,6 +171,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Gradle.PaymentApplicationTests.testDebitPayment_success" />
       <item itemvalue="Gradle.OrderApplicationTests.testIntegrationOrder" />
       <item itemvalue="Spring Boot.PaymentApplication" />
       <item itemvalue="Spring Boot.OrderApplication" />
@@ -169,6 +179,7 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.PaymentApplicationTests.testDebitPayment_success" />
         <item itemvalue="Gradle.OrderApplicationTests.testIntegrationOrder" />
       </list>
     </recent_temporary>
@@ -184,7 +195,7 @@
       <workItem from="1695360134514" duration="15450000" />
       <workItem from="1695608421427" duration="23715000" />
       <workItem from="1695697243393" duration="17777000" />
-      <workItem from="1695781801505" duration="11551000" />
+      <workItem from="1695781801505" duration="13931000" />
     </task>
     <servers />
   </component>

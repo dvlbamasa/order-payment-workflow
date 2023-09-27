@@ -21,6 +21,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.math.BigDecimal;
 
@@ -30,19 +31,15 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 class OrderApplicationTests {
 
-	@Rule
-	public TestWorkflowRule testWorkflowRule =
-			TestWorkflowRule.newBuilder()
-					.setWorkflowTypes(OrderWorkflowImpl.class)
-					.setDoNotStart(true)
-					.build();
-
 	@Mock
 	private OrderService orderService;
 	@Mock
 	private PaymentService paymentService;
 	@Mock
 	private ShipmentService shipmentService;
+
+	@MockBean
+	private Worker createOrderWorker;
 
 	private TestWorkflowEnvironment testEnv;
 	private Worker orderWorker;
@@ -64,7 +61,6 @@ class OrderApplicationTests {
 	public void tearDown() {
 		testEnv.close();
 	}
-
 
 	@Test
 	public void testIntegrationOrder() {

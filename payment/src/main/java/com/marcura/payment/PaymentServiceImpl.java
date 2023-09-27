@@ -4,6 +4,7 @@ import com.marcura.common.OrderDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -26,5 +27,11 @@ public class PaymentServiceImpl implements PaymentService {
         payment.setPaymentId(paymentId.toString());
         Payment paymentPersisted = repository.save(payment);
         return paymentPersisted.getPaymentId();
+    }
+
+    @Override
+    public void rollbackDebitPayment(Long orderId) {
+        Optional<Payment> payment = repository.findByOrderId(orderId);
+        payment.ifPresent(repository::delete);
     }
 }

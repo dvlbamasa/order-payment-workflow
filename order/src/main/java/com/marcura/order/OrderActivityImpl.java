@@ -19,4 +19,9 @@ public class OrderActivityImpl implements OrderActivity {
     public void createOrder(OrderDto orderDto) {
         orderService.createOrder(orderDto);
     }
+
+    @Override
+    public void rollbackCreateOrder(Long orderId) {
+        orderService.rollBackCreateOrder(orderId);
+    }
 }

@@ -4,6 +4,8 @@ import com.marcura.common.OrderDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * Created by IntelliJ IDEA.
  * User: d.amasa
@@ -22,5 +24,11 @@ public class OrderServiceImpl implements OrderService{
     public void createOrder(OrderDto orderDto) {
         Order order = orderMapper.toEntity(orderDto);
         repository.save(order);
+    }
+
+    @Override
+    public void rollBackCreateOrder(Long oderId) {
+        Optional<Order> order = repository.findByOrderId(oderId);
+        order.ifPresent(repository::delete);
     }
 }

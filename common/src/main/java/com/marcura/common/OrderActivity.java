@@ -17,6 +17,8 @@ import java.time.Duration;
 public interface OrderActivity {
     void createOrder(OrderDto orderDto);
 
+    void rollbackCreateOrder(Long orderId);
+
     static ActivityOptions GetActivityOptions() {
         return ActivityOptions.newBuilder()
                 .setStartToCloseTimeout(Duration.ofMinutes(2))

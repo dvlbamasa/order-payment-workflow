@@ -4,6 +4,8 @@ import com.marcura.common.OrderDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * Created by IntelliJ IDEA.
  * User: d.amasa
@@ -22,5 +24,11 @@ public class ShipmentServiceImpl implements ShipmentService{
         Shipment shipment = mapper.toEntity(orderDto);
         Shipment shipmentPersisted = repository.save(shipment);
         return shipmentPersisted.getId().toString();
+    }
+
+    @Override
+    public void rollbackShip(Long orderId) {
+        Optional<Shipment> shipment = repository.findByOrderId(orderId);
+        shipment.ifPresent(repository::delete);
     }
 }

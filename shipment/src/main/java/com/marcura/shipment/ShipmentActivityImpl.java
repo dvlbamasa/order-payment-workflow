@@ -19,4 +19,9 @@ public class ShipmentActivityImpl implements ShipmentActivity {
     public String ship(OrderDto orderDto) {
         return shipmentService.ship(orderDto);
     }
+
+    @Override
+    public void rollbackShip(Long orderId) {
+        shipmentService.rollbackShip(orderId);
+    }
 }

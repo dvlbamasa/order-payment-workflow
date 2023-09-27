@@ -5,6 +5,8 @@ import com.marcura.common.OrderDto;
 import com.marcura.common.PaymentActivity;
 import com.marcura.common.ResponseDto;
 import com.marcura.common.ShipmentActivity;
+import io.temporal.failure.TemporalFailure;
+import io.temporal.workflow.Saga;
 import io.temporal.workflow.Workflow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,16 +30,29 @@ public class OrderWorkflowImpl implements OrderWorkflow{
 
     @Override
     public ResponseDto createOrder(OrderDto orderDto) {
-        LOGGER.info("Creating order...");
-        orderActivity.createOrder(orderDto);
-        LOGGER.info("Processing payment debit...");
-        String paymentId = paymentActivity.debitPayment(orderDto);
-        LOGGER.info("Shipping order...");
-        String shipmentId = shipmentActivity.ship(orderDto);
-        LOGGER.info("Workflow finished!");
-        ResponseDto responseDto = new ResponseDto();
-        responseDto.setShipmentId(shipmentId);
-        responseDto.setPaymentTransactionId(paymentId);
-        return responseDto;
+        Saga saga = new Saga(new Saga.Options.Builder().build());
+        try {
+            LOGGER.info("Creating order...");
+            saga.addCompensation(orderActivity::rollbackCreateOrder, orderDto.getOrderId());
+            orderActivity.createOrder(orderDto);
+
+            LOGGER.info("Processing payment debit...");
+            saga.addCompensation(paymentActivity::rollbackDebitPayment, orderDto.getOrderId());
+            String paymentId = paymentActivity.debitPayment(orderDto);
+
+            LOGGER.info("Shipping order...");
+            saga.addCompensation(shipmentActivity::rollbackShip, orderDto.getOrderId());
+            String shipmentId = shipmentActivity.ship(orderDto);
+            LOGGER.info("Workflow finished!");
+
+            ResponseDto responseDto = new ResponseDto();
+            responseDto.setShipmentId(shipmentId);
+            responseDto.setPaymentTransactionId(paymentId);
+            return responseDto;
+        } catch (TemporalFailure failure) {
+            saga.compensate();
+            throw failure;
+        }
+
     }
 }

@@ -17,6 +17,8 @@ import java.time.Duration;
 public interface PaymentActivity {
     String debitPayment(OrderDto orderDto);
 
+    void rollbackDebitPayment(Long orderId);
+
     static ActivityOptions GetActivityOptions() {
         return ActivityOptions.newBuilder()
                 .setStartToCloseTimeout(Duration.ofMinutes(2))

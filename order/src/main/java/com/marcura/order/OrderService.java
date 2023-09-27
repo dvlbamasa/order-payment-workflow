@@ -12,4 +12,5 @@ import com.marcura.common.OrderDto;
 public interface OrderService {
 
     void createOrder(OrderDto orderDto);
+    void rollBackCreateOrder(Long oderId);
 }

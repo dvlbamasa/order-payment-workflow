@@ -17,6 +17,8 @@ import java.time.Duration;
 public interface ShipmentActivity {
     String ship(OrderDto orderDto);
 
+    void rollbackShip(Long orderId);
+
     static ActivityOptions GetActivityOptions() {
         return ActivityOptions.newBuilder()
                 .setStartToCloseTimeout(Duration.ofMinutes(2))

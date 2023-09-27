@@ -19,4 +19,9 @@ public class PaymentActivityImpl implements PaymentActivity {
     public String debitPayment(OrderDto orderDto) {
         return paymentService.debitPayment(orderDto);
     }
+
+    @Override
+    public void rollbackDebitPayment(Long orderId) {
+        paymentService.rollbackDebitPayment(orderId);
+    }
 }

@@ -11,4 +11,5 @@ import com.marcura.common.OrderDto;
 public interface PaymentService {
 
     String debitPayment(OrderDto orderDto);
+    void rollbackDebitPayment(Long orderId);
 }

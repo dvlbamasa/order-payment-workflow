@@ -11,4 +11,5 @@ import com.marcura.common.OrderDto;
 public interface ShipmentService {
 
     String ship(OrderDto orderDto);
+    void rollbackShip(Long orderId);
 }

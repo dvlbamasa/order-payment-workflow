@@ -2,6 +2,8 @@ package com.marcura.payment;
 
 import com.marcura.common.OrderDto;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,6 +19,8 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class PaymentServiceImpl implements PaymentService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(PaymentServiceImpl.class);
+
     private final PaymentRepository repository;
     private final PaymentMapper paymentMapper;
 
@@ -31,6 +35,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public void rollbackDebitPayment(Long orderId) {
+        LOGGER.info("PERFORMING ROLLBACK ON PAYMENT");
         Optional<Payment> payment = repository.findByOrderId(orderId);
         payment.ifPresent(repository::delete);
     }

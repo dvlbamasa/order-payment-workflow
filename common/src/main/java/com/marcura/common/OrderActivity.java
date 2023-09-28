@@ -15,7 +15,7 @@ import java.time.Duration;
 
 @ActivityInterface
 public interface OrderActivity {
-    void createOrder(OrderDto orderDto);
+    String createOrder(OrderDto orderDto);
 
     void rollbackCreateOrder(Long orderId);
 

@@ -11,10 +11,9 @@ import com.marcura.shipment.ShipmentActivityImpl;
 import com.marcura.shipment.ShipmentService;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
+import io.temporal.failure.TemporalException;
 import io.temporal.testing.TestWorkflowEnvironment;
-import io.temporal.testing.TestWorkflowRule;
 import io.temporal.worker.Worker;
-import org.junit.Rule;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,6 +25,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import java.math.BigDecimal;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -37,10 +38,8 @@ class OrderApplicationTests {
 	private PaymentService paymentService;
 	@Mock
 	private ShipmentService shipmentService;
-
 	@MockBean
 	private Worker createOrderWorker;
-
 	private TestWorkflowEnvironment testEnv;
 	private Worker orderWorker;
 	private Worker paymentWorker;
@@ -63,9 +62,10 @@ class OrderApplicationTests {
 	}
 
 	@Test
-	public void testIntegrationOrder() {
+	public void testIntegrationOrder_success() {
 		when(paymentService.debitPayment(any(OrderDto.class))).thenReturn("1234-PAYMENT-REF");
 		when(shipmentService.ship(any(OrderDto.class))).thenReturn("1234-SHIP-REF");
+		when(orderService.createOrder(any(OrderDto.class))).thenReturn("1234-ORDER-REF");
 
 		orderWorker.registerActivitiesImplementations(new OrderActivityImpl(orderService));
 		paymentWorker.registerActivitiesImplementations(new PaymentActivityImpl(paymentService));
@@ -79,6 +79,81 @@ class OrderApplicationTests {
 		ResponseDto responseDto = workflow.createOrder(generateDto());
 		Assertions.assertEquals("1234-SHIP-REF", responseDto.getShipmentId());
 		Assertions.assertEquals("1234-PAYMENT-REF", responseDto.getPaymentTransactionId());
+		Assertions.assertEquals("1234-ORDER-REF", responseDto.getOrderId());
+	}
+
+	@Test
+	public void testIntegrationOrder_whenPaymentFailed_thenThrowTemporalException() {
+		when(paymentService.debitPayment(any(OrderDto.class))).thenThrow(TemporalException.class);
+
+		orderWorker.registerActivitiesImplementations(new OrderActivityImpl(orderService));
+		paymentWorker.registerActivitiesImplementations(new PaymentActivityImpl(paymentService));
+		shipmentWorker.registerActivitiesImplementations(new ShipmentActivityImpl(shipmentService));
+
+		testEnv.start();
+		OrderWorkflow workflow =
+				client.newWorkflowStub(
+						OrderWorkflow.class, WorkflowOptions.newBuilder()
+								.setTaskQueue(TaskQueue.ORDER_TASK_QUEUE.name()).build());
+
+		Assertions.assertThrows(TemporalException.class, () -> {
+			workflow.createOrder(generateDto());
+		});
+		verify(paymentService, times(1)).rollbackDebitPayment(any(Long.class));
+		verify(shipmentService, times(0)).rollbackShip(any(Long.class));
+		verify(orderService, times(0)).rollBackCreateOrder(any(Long.class));
+	}
+
+	@Test
+	public void testIntegrationOrder_whenShipmentFailed_thenThrowTemporalException() {
+		when(shipmentService.ship(any(OrderDto.class))).thenThrow(TemporalException.class);
+
+		orderWorker.registerActivitiesImplementations(new OrderActivityImpl(orderService));
+		paymentWorker.registerActivitiesImplementations(new PaymentActivityImpl(paymentService));
+		shipmentWorker.registerActivitiesImplementations(new ShipmentActivityImpl(shipmentService));
+
+		testEnv.start();
+		OrderWorkflow workflow =
+				client.newWorkflowStub(
+						OrderWorkflow.class, WorkflowOptions.newBuilder()
+								.setTaskQueue(TaskQueue.ORDER_TASK_QUEUE.name()).build());
+
+		Assertions.assertThrows(TemporalException.class, () -> {
+			workflow.createOrder(generateDto());
+		});
+		verify(paymentService, times(1)).rollbackDebitPayment(any(Long.class));
+		verify(shipmentService, times(1)).rollbackShip(any(Long.class));
+		verify(orderService, times(0)).rollBackCreateOrder(any(Long.class));
+	}
+
+	@Test
+	public void testIntegrationOrder_whenOrderCreationFailed_thenThrowTemporalException() {
+		when(shipmentService.ship(any(OrderDto.class))).thenReturn("1234-SHIPMENT-REF");
+		when(orderService.createOrder(any(OrderDto.class))).thenThrow(TemporalException.class);
+
+		orderWorker.registerActivitiesImplementations(new OrderActivityImpl(orderService));
+		paymentWorker.registerActivitiesImplementations(new PaymentActivityImpl(paymentService));
+		shipmentWorker.registerActivitiesImplementations(new ShipmentActivityImpl(shipmentService));
+
+		testEnv.start();
+		OrderWorkflow workflow =
+				client.newWorkflowStub(
+						OrderWorkflow.class, WorkflowOptions.newBuilder()
+								.setTaskQueue(TaskQueue.ORDER_TASK_QUEUE.name()).build());
+
+		Assertions.assertThrows(TemporalException.class, () -> {
+			workflow.createOrder(generateDto());
+		});
+		verify(paymentService, times(1)).rollbackDebitPayment(any(Long.class));
+		verify(shipmentService, times(1)).rollbackShip(any(Long.class));
+		verify(orderService, times(1)).rollBackCreateOrder(any(Long.class));
+	}
+
+	@Test
+	public void testOrderCreation_success() {
+		when(orderService.createOrder(any(OrderDto.class))).thenReturn("1234-ORDER-REF");
+		String result = orderService.createOrder(generateDto());
+		Assertions.assertEquals("1234-ORDER-REF", result);
 	}
 
 	private OrderDto generateDto() {

@@ -32,10 +32,6 @@ public class OrderWorkflowImpl implements OrderWorkflow{
     public ResponseDto createOrder(OrderDto orderDto) {
         Saga saga = new Saga(new Saga.Options.Builder().build());
         try {
-            LOGGER.info("Creating order...");
-            saga.addCompensation(orderActivity::rollbackCreateOrder, orderDto.getOrderId());
-            orderActivity.createOrder(orderDto);
-
             LOGGER.info("Processing payment debit...");
             saga.addCompensation(paymentActivity::rollbackDebitPayment, orderDto.getOrderId());
             String paymentId = paymentActivity.debitPayment(orderDto);
@@ -43,11 +39,16 @@ public class OrderWorkflowImpl implements OrderWorkflow{
             LOGGER.info("Shipping order...");
             saga.addCompensation(shipmentActivity::rollbackShip, orderDto.getOrderId());
             String shipmentId = shipmentActivity.ship(orderDto);
+
+            LOGGER.info("Creating order...");
+            saga.addCompensation(orderActivity::rollbackCreateOrder, orderDto.getOrderId());
+            String orderId = orderActivity.createOrder(orderDto);
             LOGGER.info("Workflow finished!");
 
             ResponseDto responseDto = new ResponseDto();
             responseDto.setShipmentId(shipmentId);
             responseDto.setPaymentTransactionId(paymentId);
+            responseDto.setOrderId(orderId);
             return responseDto;
         } catch (TemporalFailure failure) {
             saga.compensate();

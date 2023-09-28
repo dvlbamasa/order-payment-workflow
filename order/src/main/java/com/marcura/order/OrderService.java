@@ -1,6 +1,5 @@
 package com.marcura.order;
 
-import com.marcura.common.OrderActivity;
 import com.marcura.common.OrderDto;
 
 /**
@@ -11,6 +10,6 @@ import com.marcura.common.OrderDto;
  */
 public interface OrderService {
 
-    void createOrder(OrderDto orderDto);
+    String createOrder(OrderDto orderDto);
     void rollBackCreateOrder(Long oderId);
 }

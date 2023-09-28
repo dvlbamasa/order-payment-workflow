@@ -24,7 +24,7 @@ public interface OrderWorkflow {
 
     static WorkflowOptions GetWorkflowOption() {
         return  WorkflowOptions.newBuilder()
-                .setWorkflowId(UUID.randomUUID().toString())
+                .setWorkflowId("OrderWorkflow-" + UUID.randomUUID().toString())
                 .setTaskQueue(TaskQueue.ORDER_TASK_QUEUE.name())
                 .build();
     }

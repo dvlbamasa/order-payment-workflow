@@ -14,5 +14,6 @@ import lombok.EqualsAndHashCode;
 public class ResponseDto{
     private String shipmentId;
     private String paymentTransactionId;
+    private String orderId;
     private String errorMessage;
 }

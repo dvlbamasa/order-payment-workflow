@@ -16,8 +16,8 @@ public class OrderActivityImpl implements OrderActivity {
     private final OrderService orderService;
 
     @Override
-    public void createOrder(OrderDto orderDto) {
-        orderService.createOrder(orderDto);
+    public String createOrder(OrderDto orderDto) {
+        return orderService.createOrder(orderDto);
     }
 
     @Override

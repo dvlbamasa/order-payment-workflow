@@ -128,7 +128,6 @@ class OrderApplicationTests {
 
 	@Test
 	public void testIntegrationOrder_whenOrderCreationFailed_thenThrowTemporalException() {
-		when(shipmentService.ship(any(OrderDto.class))).thenReturn("1234-SHIPMENT-REF");
 		when(orderService.createOrder(any(OrderDto.class))).thenThrow(TemporalException.class);
 
 		orderWorker.registerActivitiesImplementations(new OrderActivityImpl(orderService));

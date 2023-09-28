@@ -21,7 +21,8 @@ public interface ShipmentActivity {
 
     static ActivityOptions GetActivityOptions() {
         return ActivityOptions.newBuilder()
-                .setStartToCloseTimeout(Duration.ofMinutes(2))
+                .setStartToCloseTimeout(Duration.ofSeconds(30))
+                .setScheduleToCloseTimeout(Duration.ofSeconds(60))
                 .setTaskQueue(TaskQueue.SHIPMENT_TASK_QUEUE.name())
                 .setRetryOptions(GetRetryOptions())
                 .build();
@@ -29,7 +30,7 @@ public interface ShipmentActivity {
 
     static RetryOptions GetRetryOptions() {
         return RetryOptions.newBuilder()
-                .setMaximumAttempts(3)
+                .setMaximumAttempts(2)
                 .build();
     }
 }

@@ -1,6 +1,7 @@
 package com.marcura.common;
 
 import io.temporal.activity.ActivityInterface;
+import io.temporal.activity.ActivityMethod;
 import io.temporal.activity.ActivityOptions;
 import io.temporal.common.RetryOptions;
 
@@ -15,6 +16,8 @@ import java.time.Duration;
 
 @ActivityInterface
 public interface PaymentActivity {
+
+    @ActivityMethod
     String debitPayment(OrderDto orderDto);
 
     void rollbackDebitPayment(Long orderId);

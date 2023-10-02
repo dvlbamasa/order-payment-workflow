@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9d1de7b-e7fc-4838-a98a-47422bf59715" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/src/test/java/com/marcura/order/OrderApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/test/java/com/marcura/order/OrderApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,8 +100,8 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.OrderApplicationTests.testIntegrationOrder_whenPaymentServiceFails_throwsTemporalFailureException">
-    <configuration name="OrderApplicationTests.testIntegrationOrder" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.OrderApplicationTests.testIntegrationOrder_whenOrderCreationFailed_thenThrowTemporalException">
+    <configuration name="OrderApplicationTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -114,7 +114,7 @@
           <list>
             <option value=":order:test" />
             <option value="--tests" />
-            <option value="&quot;com.marcura.order.OrderApplicationTests.testIntegrationOrder&quot;" />
+            <option value="&quot;com.marcura.order.OrderApplicationTests&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -125,7 +125,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="OrderApplicationTests.testIntegrationOrder_whenPaymentServiceFails_throwsTemporalFailureException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="OrderApplicationTests.testIntegrationOrder_whenOrderCreationFailed_thenThrowTemporalException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -138,7 +138,7 @@
           <list>
             <option value=":order:test" />
             <option value="--tests" />
-            <option value="&quot;com.marcura.order.OrderApplicationTests.testIntegrationOrder_whenPaymentServiceFails_throwsTemporalFailureException&quot;" />
+            <option value="&quot;com.marcura.order.OrderApplicationTests.testIntegrationOrder_whenOrderCreationFailed_thenThrowTemporalException&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -149,7 +149,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="PaymentApplicationTests.testDebitPayment_success" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="OrderApplicationTests.testIntegrationOrder_whenPaymentFailed_thenThrowTemporalException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -160,9 +160,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":payment:test" />
+            <option value=":order:test" />
             <option value="--tests" />
-            <option value="&quot;com.marcura.payment.PaymentApplicationTests.testDebitPayment_success&quot;" />
+            <option value="&quot;com.marcura.order.OrderApplicationTests.testIntegrationOrder_whenPaymentFailed_thenThrowTemporalException&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -173,7 +173,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="ShipmentApplicationTests.testShipment_success" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="OrderApplicationTests.testIntegrationOrder_whenShipmentFailed_thenThrowTemporalException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -184,9 +184,33 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":shipment:test" />
+            <option value=":order:test" />
             <option value="--tests" />
-            <option value="&quot;com.marcura.shipment.ShipmentApplicationTests.testShipment_success&quot;" />
+            <option value="&quot;com.marcura.order.OrderApplicationTests.testIntegrationOrder_whenShipmentFailed_thenThrowTemporalException&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="OrderApplicationTests.testOrderCreation_success" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":order:test" />
+            <option value="--tests" />
+            <option value="&quot;com.marcura.order.OrderApplicationTests.testOrderCreation_success&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -219,20 +243,22 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.OrderApplicationTests.testIntegrationOrder_whenPaymentServiceFails_throwsTemporalFailureException" />
-      <item itemvalue="Gradle.PaymentApplicationTests.testDebitPayment_success" />
-      <item itemvalue="Gradle.ShipmentApplicationTests.testShipment_success" />
-      <item itemvalue="Gradle.OrderApplicationTests.testIntegrationOrder" />
+      <item itemvalue="Gradle.OrderApplicationTests" />
+      <item itemvalue="Gradle.OrderApplicationTests.testIntegrationOrder_whenOrderCreationFailed_thenThrowTemporalException" />
+      <item itemvalue="Gradle.OrderApplicationTests.testIntegrationOrder_whenPaymentFailed_thenThrowTemporalException" />
+      <item itemvalue="Gradle.OrderApplicationTests.testIntegrationOrder_whenShipmentFailed_thenThrowTemporalException" />
+      <item itemvalue="Gradle.OrderApplicationTests.testOrderCreation_success" />
       <item itemvalue="Spring Boot.PaymentApplication" />
       <item itemvalue="Spring Boot.OrderApplication" />
       <item itemvalue="Spring Boot.ShipmentApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.OrderApplicationTests.testIntegrationOrder_whenPaymentServiceFails_throwsTemporalFailureException" />
-        <item itemvalue="Gradle.OrderApplicationTests.testIntegrationOrder" />
-        <item itemvalue="Gradle.ShipmentApplicationTests.testShipment_success" />
-        <item itemvalue="Gradle.PaymentApplicationTests.testDebitPayment_success" />
+        <item itemvalue="Gradle.OrderApplicationTests.testIntegrationOrder_whenOrderCreationFailed_thenThrowTemporalException" />
+        <item itemvalue="Gradle.OrderApplicationTests" />
+        <item itemvalue="Gradle.OrderApplicationTests.testIntegrationOrder_whenShipmentFailed_thenThrowTemporalException" />
+        <item itemvalue="Gradle.OrderApplicationTests.testIntegrationOrder_whenPaymentFailed_thenThrowTemporalException" />
+        <item itemvalue="Gradle.OrderApplicationTests.testOrderCreation_success" />
       </list>
     </recent_temporary>
   </component>
@@ -248,7 +274,11 @@
       <workItem from="1695608421427" duration="23715000" />
       <workItem from="1695697243393" duration="17777000" />
       <workItem from="1695781801505" duration="15924000" />
-      <workItem from="1695867520991" duration="2450000" />
+      <workItem from="1695867520991" duration="19573000" />
+      <workItem from="1695956007313" duration="9298000" />
+      <workItem from="1696162033842" duration="653000" />
+      <workItem from="1696215104059" duration="4779000" />
+      <workItem from="1696227165773" duration="651000" />
     </task>
     <servers />
   </component>

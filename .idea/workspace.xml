@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9d1de7b-e7fc-4838-a98a-47422bf59715" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -248,9 +247,9 @@
       <item itemvalue="Gradle.OrderApplicationTests.testIntegrationOrder_whenPaymentFailed_thenThrowTemporalException" />
       <item itemvalue="Gradle.OrderApplicationTests.testIntegrationOrder_whenShipmentFailed_thenThrowTemporalException" />
       <item itemvalue="Gradle.OrderApplicationTests.testOrderCreation_success" />
+      <item itemvalue="Spring Boot.ShipmentApplication" />
       <item itemvalue="Spring Boot.PaymentApplication" />
       <item itemvalue="Spring Boot.OrderApplication" />
-      <item itemvalue="Spring Boot.ShipmentApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -278,7 +277,8 @@
       <workItem from="1695956007313" duration="9298000" />
       <workItem from="1696162033842" duration="653000" />
       <workItem from="1696215104059" duration="4779000" />
-      <workItem from="1696227165773" duration="651000" />
+      <workItem from="1696227165773" duration="7100000" />
+      <workItem from="1696300124408" duration="12563000" />
     </task>
     <servers />
   </component>

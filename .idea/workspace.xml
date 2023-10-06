@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a9d1de7b-e7fc-4838-a98a-47422bf59715" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/marcura/common/TemporalScheduleConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/marcura/common/TemporalScheduleComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/marcura/common/TemporalScheduleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/marcura/common/TemporalScheduleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/TemporalScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order/src/main/java/com/marcura/order/TemporalScheduleController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,6 +282,11 @@
       <workItem from="1696215104059" duration="4779000" />
       <workItem from="1696227165773" duration="7100000" />
       <workItem from="1696300124408" duration="12563000" />
+      <workItem from="1696322832761" duration="3574000" />
+      <workItem from="1696386355428" duration="5300000" />
+      <workItem from="1696470775182" duration="2008000" />
+      <workItem from="1696482152425" duration="4838000" />
+      <workItem from="1696561363835" duration="696000" />
     </task>
     <servers />
   </component>

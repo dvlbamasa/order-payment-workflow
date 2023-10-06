@@ -1,5 +1,6 @@
 package com.marcura.common;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.temporal.api.schedule.v1.SchedulePatch;
 import io.temporal.api.workflowservice.v1.DeleteScheduleRequest;
 import io.temporal.api.workflowservice.v1.DescribeScheduleRequest;
@@ -25,7 +26,16 @@ public class TemporalScheduleService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TemporalScheduleService.class);
     private final WorkflowClient workflowClient;
+    private final TemporalScheduleComponent temporalScheduleComponent;
     private static final String NAMESPACE = "default";
+
+    public void createSchedule(String scheduleId) {
+        try {
+            temporalScheduleComponent.createTemporalSchedule(scheduleId);
+        } catch (JsonProcessingException processingException) {
+            LOGGER.info("ERROR OCCURRED");
+        }
+    }
 
     public void pauseSchedule(String scheduleId, String reason) {
         workflowClient.getWorkflowServiceStubs().blockingStub()

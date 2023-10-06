@@ -16,8 +16,7 @@ import io.temporal.api.workflowservice.v1.CreateScheduleRequest;
 import io.temporal.client.WorkflowClient;
 import io.temporal.common.converter.EncodingKeys;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
@@ -29,20 +28,18 @@ import java.util.UUID;
  * Time: 11:53 am
  */
 
-@Configuration
+@Component
 @RequiredArgsConstructor
-public class TemporalScheduleConfig {
+public class TemporalScheduleComponent {
 
     private static final String WORKFLOW = "SCHEDULED_WORKFLOW";
     private static final String TASK_QUEUE = "SCHEDULED_TASK_QUEUE";
     private static final String WORKFLOW_ID = WORKFLOW + "-" + UUID.randomUUID();
     private static final String NAMESPACE = "default";
-    private static final String SCHEDULE_ID = "test-schedule";
     private static final String REQUEST_ID = "test-request-ID";
     private final WorkflowClient workflowClient;
 
-    @Bean
-    public void createTemporalSchedule() throws JsonProcessingException {
+    public void createTemporalSchedule(String scheduleId) throws JsonProcessingException {
         ScheduleSpec.Builder interval = ScheduleSpec.newBuilder().addInterval(IntervalSpec.newBuilder()
                 .setInterval(com.google.protobuf.Duration.newBuilder().setSeconds(5).build())
                 .build());
@@ -68,7 +65,7 @@ public class TemporalScheduleConfig {
                 .blockingStub()
                 .createSchedule(
                         CreateScheduleRequest.newBuilder()
-                                .setScheduleId(SCHEDULE_ID)
+                                .setScheduleId(scheduleId)
                                 .setNamespace(NAMESPACE)
                                 .setRequestId(REQUEST_ID)
                                 .setSchedule(
